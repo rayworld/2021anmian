@@ -15,10 +15,12 @@ class Voucher extends Controller {
    * 绑定数据表
    * @var string
    */
-  private $table = 'SystemUser';
+  private $table = 'VoucherElec';
 
 /**
- * 系统用户管理
+ * 凭证管理
+ * @auth true
+ * @menu true
  * @throws \think\db\exception\DataNotFoundException
  * @throws \think\db\exception\DbException
  * @throws \think\db\exception\ModelNotFoundException
@@ -32,21 +34,22 @@ class Voucher extends Controller {
 
     $this->title = '电费分摊凭证管理';
     $query       = $this->_query($this->table);
-    $query->equal('status')->dateBetween('login_at,create_at');
-    $query->like('username,contact_phone#phone,contact_mail#mail');
+    //$query->equal('is_deleted')->dateBetween('login_at,create_at');
+    //$query->like('username,contact_phone#phone,contact_mail#mail');
 
     // 加载对应数据列表
     $this->type = input('type', 'all');
-    $query->where(['is_deleted' => 0, 'status' => 1]);
+    $query->where(['is_deleted' => 0]);
 
     // 列表排序并显示
-    $query->order('sort desc,id desc')->page();
+    $query->order('id desc')->page();
 
     return $this->fetch();
   }
 
   /**
-   * 添加系统用户
+   * 添加凭证
+   * @auth true
    * @throws \think\db\exception\DataNotFoundException
    * @throws \think\db\exception\DbException
    * @throws \think\db\exception\ModelNotFoundException
@@ -54,5 +57,27 @@ class Voucher extends Controller {
   public function add() {
     $this->_applyFormToken();
     $this->_form($this->table, 'form');
+  }
+
+  /**
+   * 编辑凭证
+   * @auth true
+   * @throws \think\db\exception\DataNotFoundException
+   * @throws \think\db\exception\DbException
+   * @throws \think\db\exception\ModelNotFoundException
+   */
+  public function edit() {
+    $this->_applyFormToken();
+    $this->_form($this->table, 'form');
+  }
+
+  /**
+   * 删除凭证
+   * @auth true
+   * @throws \think\db\exception\DbException
+   */
+  public function remove() {
+    $this->_applyFormToken();
+    $this->_delete($this->table);
   }
 }

@@ -7,11 +7,11 @@
                     <div class="layui-col-xs4">
                         <label class="relative block">
                             <span class="color-green font-w7">总金额</span>
-                            {if isset($vo) and isset($vo.data)}
-                            <input value='{$totalamount|default="0"}' name="total_amount" id="total_amount"
+                            {if isset($vo)}
+                            <input value='{$vo.total_amount|default="0"}' name="total_amount" id="total_amount"
                                 class="layui-input layui-bg-gray">
                             {else}
-                            <input name="total_amount" id="total_amount" value='{$totalamount|default="0"}'
+                            <input name="total_amount" id="total_amount" value='{$$vo.total_amount|default="0"}'
                                 placeholder="请输入总金额" class="layui-input">
                             {/if}
                         </label>
@@ -78,14 +78,14 @@
                 <div class=" layui-col-xs3">
                     <label class="relative block">
                         <span class="color-green font-w7">动力电用量</span>
-                        <input id="qtyA" name="qtyA" value='{$vo.qtyA|default="0"}' placeholder="请输入动力电用量"
+                        <input id="qtyA" name="qtyA" value='{$vo.qty_A|default="0"}' placeholder="请输入动力电用量"
                             class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
                 <div class="layui-col-xs3">
                     <label class="relative block">
                         <span class="color-green font-w7">动力电金额</span>
-                        <input disabled name="amountA" id="amountA" value='{$vo.amountA|default="---"}'
+                        <input disabled name="amountA" id="amountA" value='{$vo.amount_A|default="---"}'
                             placeholder="请输入动力电金额" class="layui-input">
                     </label>
                 </div>
@@ -217,7 +217,7 @@
             <div class="layui-col-xs10 layui-col-space5">
                 <div class=" layui-col-xs3">
                     <label class="relative block">
-                        <input id="qtyE" name="qtyE" value='{$vo.qtyA|default=" 0"}' placeholder="请输入动力电用量"
+                        <input id="qtyE" name="qtyE" value='{$vo.qty_E|default="0"}' placeholder="请输入动力电用量"
                             class="layui-input" onkeyup="displayResult()">
                     </label>
                 </div>
