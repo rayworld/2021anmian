@@ -30,6 +30,9 @@
                     </th>
                     <th class='text-left nowrap'></th>
                     <th class='text-left nowrap'></th>
+                    <th class='text-left nowrap'></th>
+                    <th class='text-left nowrap'></th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -46,13 +49,29 @@
                                 value="{$vo.sort}" class="list-sort-input"></label>
                     </td>
                     <td class='text-left nowrap'>
-
+                        <div class="inline-block sub-span-blue">
+                            类型：<span><b>{$vo.voucher_type|default=''}</b></span>
+                        </div>
                     </td>
                     <td class='text-left nowrap'>
-
+                        <div class="inline-block sub-span-blue">
+                            时间：<span><b>{$vo.voucher_date|default=''}</b></span>
+                        </div>
                     </td>
                     <td class='text-left nowrap'>
-
+                        <div class="inline-block sub-span-blue">
+                            金额：<span><b>{$vo.total_amount|default=''}</b></span>
+                        </div>
+                    </td>
+                    <td class='text-left nowrap'>
+                        <div class="inline-block sub-span-blue">
+                            用量：<span><b>{$vo.total_qty|default=''}</b></span>
+                        </div>
+                    </td>
+                    <td class='text-left nowrap'>
+                        <div class="inline-block sub-span-blue">
+                            单价：<span><b>{$vo.unit_price|default=''}</b></span>
+                        </div>
                     </td>
                     <td>
                         <!--{if auth("edit")}-->
