@@ -1,25 +1,25 @@
 <form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
     <div class="layui-card-body padding-left-40">
         <div class="layui-row layui-col-space15">
-            <div class="layui-col-xs6">
+            <div class="layui-col-xs12">
                 <fieldset>
                     <legend>动力电</legend>
                     <div class="layui-col-xs4">
                         <label class="relative block">
                             <span class="color-green font-w7">总金额</span>
                             {if isset($vo)}
-                            <input value='{$vo.total_amount|default="0"}' name="total_amount" id="total_amount"
-                                class="layui-input layui-bg-gray">
+                            <input name="total_amount" id="total_amount" value='{$vo.total_amount|default="0"}'
+                                class="layui-input layui-bg-gray" onmouseup="displayResult()">
                             {else}
-                            <input name="total_amount" id="total_amount" value='{$$vo.total_amount|default="0"}'
-                                placeholder="请输入总金额" class="layui-input">
+                            <input name="total_amount" id="total_amount" value='{$vo.total_amount|default="0"}'
+                                placeholder="请输入总金额" class="layui-input" onmouseup="displayResult()">
                             {/if}
                         </label>
                     </div>
                     <div class="layui-col-xs4">
                         <label class="relative block">
                             <span class="color-green font-w7">单价</span>
-                            <input disabled id="unit_price" name="unit_price" value='{$vo.unit_price|default="0"}'
+                            <input id="unit_price" name="unit_price1" value='{$vo.unit_price|default="0"}'
                                 placeholder="请输入单价" class="layui-input">
                         </label>
                     </div>
@@ -28,36 +28,6 @@
                             <span class="color-green font-w7">总用量</span>
                             <input id="total_qty" name="total_qty" value='{$vo.total_qty|default="0"}'
                                 placeholder="请输入总用量" class="layui-input">
-                        </label>
-                    </div>
-                </fieldset>
-            </div>
-            <div class="layui-col-xs6">
-                <fieldset>
-                    <legend>照明电</legend>
-                    <div class="layui-col-xs4">
-                        <label class="relative block">
-                            <span class="color-green font-w7">总金额</span>
-                            {if isset($vo) and isset($vo.username)}
-                            <input value='{$totalamount1|default=""}' class="layui-input layui-bg-gray">
-                            {else}
-                            <input name="username" value='{$totalamount|default="0"}' placeholder="请输入总金额"
-                                class="layui-input">
-                            {/if}
-                        </label>
-                    </div>
-                    <div class="layui-col-xs4">
-                        <label class="relative block">
-                            <span class="color-green font-w7">单价</span>
-                            <input name="nickname" value='{$vo.nickname|default="0"}' placeholder="请输入总用量"
-                                class="layui-input">
-                        </label>
-                    </div>
-                    <div class="layui-col-xs4">
-                        <label class="relative block">
-                            <span class="color-green font-w7">总用量</span>
-                            <input name="nickname" value='{$vo.nickname|default="0"}' placeholder="请输入总用量"
-                                class="layui-input">
                         </label>
                     </div>
                 </fieldset>
@@ -75,32 +45,18 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class=" layui-col-xs6">
                     <label class="relative block">
-                        <span class="color-green font-w7">动力电用量</span>
-                        <input id="qtyA" name="qtyA" value='{$vo.qty_A|default="0"}' placeholder="请输入动力电用量"
+                        <span class="color-green font-w7">用量</span>
+                        <input id="qty_a" name="qty_a" value='{$vo.qty_a|default="0"}' placeholder="请输入用量"
                             class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <span class="color-green font-w7">动力电金额</span>
-                        <input disabled name="amountA" id="amountA" value='{$vo.amount_A|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <span class="color-green font-w7">照明电用量</span>
-                        <input name="qtyA_1" id="qtyA_1" value='{$vo.qtyA_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onmouseup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <span class="color-green font-w7">照明电金额</span>
-                        <input disabled name="amountA_1" id="amountA_1" value='{$vo.amountA_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <span class="color-green font-w7">金额</span>
+                        <input disabled name="amount_a" id="amount_a" value='{$vo.amount_a|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -113,28 +69,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class=" layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyB" name="qtyB" value='{$vo.qtyB|default="0"}' placeholder="请输入动力电用量"
+                        <input id="qty_b" name="qty_b" value='{$vo.qty_b|default="0"}' placeholder="请输入用量"
                             class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountB" id="amountB" value='{$vo.amountA|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyB_1" id="qtyB_1" value='{$vo.qtyB_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onmouseup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountB_1" id="amountB_1" value='{$vo.amountB_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_b" id="amount_b" value='{$vo.amount_b|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -147,28 +91,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyC" name="qtyC" value='{$vo.qtyC|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_c" name="qty_c" value='{$vo.qty_c|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disable name="amountC" id="amountC" value='{$vo.amountC|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyC_1" id="qtyC_1" value='{$vo.qtyC_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountC_1" id="amountC_1" value='{$vo.amountC_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disable name="amount_c" id="amount_c" value='{$vo.amount_c|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -181,28 +113,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyD" name="qtyD" value='{$vo.qtyD|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_d" name="qty_d" value='{$vo.qty_d|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountD" id="amountD" value='{$vo.amountD|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyD_1" id="qtyD_1" value='{$vo.qtyD_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountD_1" id="amountD_1" value='{$vo.amountD_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_d" id="amount_d" value='{$vo.amount_d|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -215,28 +135,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyE" name="qtyE" value='{$vo.qty_E|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_e" name="qty_e" value='{$vo.qty_e|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountE" id="amountE" value='{$vo.amountE|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyE_1" id="qtyE_1" value='{$vo.qtyE_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disable name="amountE_1" id="amountE_1" value='{$vo.amountE_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_e" id="amount_e" value='{$vo.amount_e|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -249,28 +157,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyF" name="qtyF" value='{$vo.qtyF|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_f" name="qty_f" value='{$vo.qty_f|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountF" id="amountF" value='{$vo.amountF|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyF_1" id="qtyF_1" value='{$vo.qtyF_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountF_1" id="amountF_1" value='{$vo.amountA_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_f" id="amount_f" value='{$vo.amount_f|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -283,28 +179,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyG" name="qtyG" value='{$vo.qtyG|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_g" name="qty_g" value='{$vo.qty_g|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountG" id="amountG" value='{$vo.amountG|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyG_1" id="qtyG_1" value='{$vo.qtyG_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountG_1" id="amountG_1" value='{$vo.amountG_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_g" id="amount_g" value='{$vo.amount_g|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -317,28 +201,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyH" name="qtyH" value='{$vo.qtyH|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_h" name="qty_h" value='{$vo.qty_h|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input dsiabled name="amountH" id="amountH" value='{$vo.amountH|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyH_1" id="qtyH_1" value='{$vo.qtyH_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountH_1" id="amounth_1" value='{$vo.amountH_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input dsiabled name="amount_h" id="amount_h" value='{$vo.amount_h|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -351,28 +223,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyI" name="qtyI" value='{$vo.qtyI|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_i" name="qty_i" value='{$vo.qty_i|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountI" id="amountI" value='{$vo.amountI|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyI_1" id="qtyI_1" value='{$vo.qtyI_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountI_1" id="amountI_1" value='{$vo.amountI_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_i" id="amount_i" value='{$vo.amount_i|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -385,28 +245,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyJ" name="qtyJ" value='{$vo.qtyJ|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_j" name="qty_j" value='{$vo.qty_j|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountJ" id="amountJ" value='{$vo.amountJ|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyJ_1" id="qtyJ_1" value='{$vo.qtyJ_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountJ_1" id="amountJ_1" value='{$vo.amountJ_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_j" id="amount_j" value='{$vo.amount_j|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -419,28 +267,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyK" name="qtyK" value='{$vo.qtyK|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_k" name="qty_k" value='{$vo.qty_k|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountK" id="amountK" value='{$vo.amountK|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="qtyK_1" id="qtyK_1" value='{$vo.qtyK_1|default="---"}'
-                            placeholder="请输入照明电用量" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountK_1" id="amountK_1" value='{$vo.amountK_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_k" id="amount_k" value='{$vo.amount_k|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -453,28 +289,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyL" name="qtyL" value='{$vo.qtyL|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_l" name="qty_l" value='{$vo.qty_l|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountL" id="amountL" value='{$vo.amountL|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="qtyL_1" id="qtyL_1" value='{$vo.qtyL_1|default="---"}'
-                            placeholder="请输入照明电用量" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountK_1" id="amountK_1" value='{$vo.amountK_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_l" id="amount_l" value='{$vo.amount_l|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -487,28 +311,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyM" name="qtyM" value='{$vo.qtyM|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_m" name="qty_m" value='{$vo.qty_m|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountM" id="amountM" value='{$vo.amountM|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="qtyM_1" id="qtyM_1" value='{$vo.qtyM_1|default="---"}'
-                            placeholder="请输入照明电用量" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountM_1" id="amountM_1" value='{$vo.amountM_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_m" id="amount_m" value='{$vo.amount_m|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -521,28 +333,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input id="qtyN" name="qtyN" value='{$vo.qtyN|default="0"}' placeholder="请输入动力电用量"
-                            class="layui-input" onkeyup="displayResult()">
+                        <input id="qty_n" name="qty_n" value='{$vo.qty_n|default="0"}' placeholder="请输入用量"
+                            class="layui-input" onmouseup="displayResult()">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountN" id="amountN" value='{$vo.amountN|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="qtyN_1" id="qtyN_1" value='{$vo.qtyN_1|default="---"}'
-                            placeholder="请输入照明电用量" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountN_1" id="amountN_1" value='{$vo.amountN_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_n" id="amount_n" value='{$vo.amount_n|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -555,28 +355,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled id="qtyO" name="qtyO" value='{$vo.qtyO|default="---"}' placeholder="请输入动力电用量"
+                        <input disabled id="qty_o" name="qty_o" value='{$vo.qty_o|default="---"}' placeholder="请输入用量"
                             class="layui-input">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountO" id="amountO" value='{$vo.amountO|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyO_1" id="qtyO_1" value='{$vo.qtyO_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountO_1" id="amountO_1" value='{$vo.amountO_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_o" id="amount_o" value='{$vo.amount_o|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -589,28 +377,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled id="qtyP" name="qtyP" value='{$vo.qtyP|default="---"}' placeholder="请输入动力电用量"
+                        <input disabled id="qty_p" name="qty_p" value='{$vo.qty_p|default="---"}' placeholder="请输入用量"
                             class="layui-input">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountP" id="amountP" value='{$vo.amountP|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyP_1" id="qtyP_1" value='{$vo.qtyP_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountP_1" id="amountP_1" value='{$vo.amountP_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_p" id="amount_p" value='{$vo.amount_p|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -623,28 +399,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled id="qtyQ" name="qtyQ" value='{$vo.qtyQ|default="---"}' placeholder="请输入动力电用量"
+                        <input disabled id="qty_q" name="qty_q" value='{$vo.qty_q|default="---"}' placeholder="请输入用量"
                             class="layui-input">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountQ" id="amountQ" value='{$vo.amountQ|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyQ_1" id="qtyQ_1" value='{$vo.qtyQ_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountQ_1" id="amountQ_1" value='{$vo.amountQ_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_q" id="amount_q" value='{$vo.amount_q|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -657,28 +421,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="qtyR" id="qtyR" value='{$vo.qtyR|default="---"}' placeholder="请输入动力电用量"
+                        <input disabled name="qty_r" id="qty_r" value='{$vo.qty_r|default="---"}' placeholder="请输入用量"
                             class="layui-input">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountR" id="amountR" value='{$vo.amountR|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyR_1" id="qtyR_1" value='{$vo.qtyR_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountR_1" id="amountR_1" value='{$vo.amountR_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_r" id="amount_r" value='{$vo.amount_r|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -691,28 +443,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled id="qtyS" name="qtyS" value='{$vo.qtyS|default="---"}' placeholder="请输入动力电用量"
+                        <input disabled id="qty_s" name="qty_s" value='{$vo.qty_s|default="---"}' placeholder="请输入用量"
                             class="layui-input">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled ame="amountS" id="amountS" value='{$vo.amountS|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyS_1" id="qtyS_1" value='{$vo.qtyS_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountS_1" id="amountS_1" value='{$vo.amountS_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled ame="amount_s" id="amount_s" value='{$vo.amount_s|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -725,28 +465,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled id="qtyT" name="qtyT" value='{$vo.qtyT|default="---"}' placeholder="请输入动力电用量"
+                        <input disabled id="qty_t" name="qty_t" value='{$vo.qty_t|default="---"}' placeholder="请输入用量"
                             class="layui-input">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input name="amountT" id="amountT" value='{$vo.amountT|default="---"}' placeholder="请输入动力电金额"
+                        <input name="amount_t" id="amount_t" value='{$vo.amount_t|default="---"}' placeholder="请输入金额"
                             class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyT_1" id="qtyT_1" value='{$vo.qtyT_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountT_1" id="amountT_1" value='{$vo.amountT_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -759,28 +487,16 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled type="qtyU" name="qtyU" value='{$vo.qtyU|default="---"}' placeholder="请输入动力电用量"
+                        <input disabled type="qty_u" name="qty_u" value='{$vo.qty_u|default="---"}' placeholder="请输入用量"
                             class="layui-input">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountU" id="amountU" value='{$vo.amountU|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyU_1" id="qtyU_1" value='{$vo.qtyU_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountU_1" id="amountU_1" value='{$vo.amountU_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_u" id="amount_u" value='{$vo.amount_u|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
@@ -793,58 +509,20 @@
                 </label>
             </div>
             <div class="layui-col-xs10 layui-col-space5">
-                <div class=" layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled type="qtyV" name="qtyV" value='{$vo.qtyV|default="---"}' placeholder="请输入动力电用量"
+                        <input disabled type="qty_v" name="qty_v" value='{$vo.qty_v|default="---"}' placeholder="请输入用量"
                             class="layui-input">
                     </label>
                 </div>
-                <div class="layui-col-xs3">
+                <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled name="amountV" id="amountV" value='{$vo.amountV|default="---"}'
-                            placeholder="请输入动力电金额" class="layui-input">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input name="qtyV_1" id="qtyV_1" value='{$vo.qtyV_1|default="0"}' placeholder="请输入照明电用量"
-                            class="layui-input" onkeyup="displayResult()">
-                    </label>
-                </div>
-                <div class="layui-col-xs3">
-                    <label class="relative block">
-                        <input disabled name="amountV_1" id="amountV_1" value='{$vo.amountV_1|default="---"}'
-                            placeholder="请输入照明电金额" class="layui-input">
+                        <input disabled name="amount_v" id="amount_v" value='{$vo.amount_v|default="---"}'
+                            placeholder="请输入金额" class="layui-input">
                     </label>
                 </div>
             </div>
         </div>
-        {notempty name='authorizes'}
-        <div class="hr-line-dashed margin-top-10 margin-bottom-10"></div>
-        <div class="layui-form-item">
-            <span class="color-green font-w7">访问权限</span>
-            <span class="color-desc margin-left-5">Authorize</span>
-            <div class="layui-textarea">
-                {if isset($vo.username) and $vo.username eq 'admin'}
-                <span class="color-desc">超级用户不需要配置权限</span>
-                {elseif empty($authorizes)}
-                <span class="color-desc">未配置权限</span>
-                {else}
-                {foreach $authorizes as $authorize}
-                <label class="think-checkbox layui-unselect">
-                    {if in_array($authorize.id, $vo.authorize)}
-                    <input type="checkbox" checked name="authorize[]" value="{$authorize.id}" lay-ignore>
-                    {$authorize.title}
-                    {else}
-                    <input type="checkbox" name="authorize[]" value="{$authorize.id}" lay-ignore> {$authorize.title}
-                    {/if}
-                </label>
-                {/foreach}
-                {/if}
-            </div>
-        </div>
-        {/notempty}
-
 
         <div class="hr-line-dashed"></div>
         {notempty name='vo.id'}<input type='hidden' value='{$vo.id}' name='id'>{/notempty}
