@@ -9,6 +9,21 @@
     <div class="layui-card-body">{block name='content'}{/block}</div>
     {block name='script'}
     <script type="text/javascript">
+        function getNowFormatDate(dateType) {
+            var date = new Date();
+            var seperator1 = "-";
+            var seperator2 = ":";
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            return dateType == "date" ? date.getFullYear() + seperator1 + month + seperator1 + strDate : date.getFullYear() + seperator1 + month + seperator1 + strDate + " " + date.getHours() + seperator2 + date.getMinutes() + seperator2 + date.getSeconds();
+        }
+
         function displayResult() {
             //取得总金额
             var input_total_amount = document.getElementById("total_amount");
@@ -29,7 +44,7 @@
             var input_qty_l = document.getElementById("qty_l");
             var input_qty_m = document.getElementById("qty_m");
             var input_qty_n = document.getElementById("qty_n");
-            /*
+
             var input_qty_o = document.getElementById("qty_o");
             var input_qty_p = document.getElementById("qty_p");
             var input_qty_q = document.getElementById("qty_q");
@@ -38,31 +53,31 @@
             var input_qty_t = document.getElementById("qty_t");
             var input_qty_u = document.getElementById("qty_u");
             var input_qty_v = document.getElementById("qty_v");
-            */
 
-            var qty_a1 = parseFloat(input_qty_a.value.toString());
-            var qty_b1 = parseFloat(input_qty_b.value.toString());
-            var qty_c1 = parseFloat(input_qty_c.value.toString());
-            var qty_d1 = parseFloat(input_qty_d.value.toString());
-            var qty_e1 = parseFloat(input_qty_e.value.toString());
-            var qty_f1 = parseFloat(input_qty_f.value.toString());
-            var qty_g1 = parseFloat(input_qty_g.value.toString());
-            var qty_h1 = parseFloat(input_qty_h.value.toString());
-            var qty_i1 = parseFloat(input_qty_i.value.toString());
-            var qty_j1 = parseFloat(input_qty_j.value.toString());
-            var qty_k1 = parseFloat(input_qty_k.value.toString());
-            var qty_l1 = parseFloat(input_qty_l.value.toString());
-            var qty_m1 = parseFloat(input_qty_m.value.toString());
-            var qty_n1 = parseFloat(input_qty_n.value.toString());
-            /* 
-            var qty_o1 = input_qty_o.value.toString() === '---' ? 0 : parseFloat(input_qty_o.value.toString());
-            var qty_p1 = input_qty_p.value.toString() === '---' ? 0 : parseFloat(input_qty_p.value.toString());
-            var qty_r1 = input_qty_r.value.toString() === '---' ? 0 : parseFloat(input_qty_r.value.toString());
-            var qty_s1 = input_qty_s.value.toString() === '---' ? 0 : parseFloat(input_qty_s.value.toString());
-            var qty_t1 = input_qty_t.value.toString() === '---' ? 0 : parseFloat(input_qty_t.value.toString());
-            var qty_u1 = input_qty_u.value.toString() === '---' ? 0 : parseFloat(input_qty_u.value.toString());
-            var qty_v1 = input_qty_v.value.toString() === '---' ? 0 : parsefloat(input_qty_v.value.toString());
-            */
+            var qty_a1 = input_qty_a.value.toString() == "---" ? 0.0 : parseFloat(input_qty_a.value);
+            var qty_b1 = input_qty_b.value.toString() == "---" ? 0.0 : parseFloat(input_qty_b.value);
+            var qty_c1 = input_qty_c.value.toString() == "---" ? 0.0 : parseFloat(input_qty_c.value);
+            var qty_d1 = input_qty_d.value.toString() == "---" ? 0.0 : parseFloat(input_qty_d.value);
+            var qty_e1 = input_qty_e.value.toString() == "---" ? 0.0 : parseFloat(input_qty_e.value);
+            var qty_f1 = input_qty_f.value.toString() == "---" ? 0.0 : parseFloat(input_qty_f.value);
+            var qty_g1 = input_qty_g.value.toString() == "---" ? 0.0 : parseFloat(input_qty_g.value);
+            var qty_h1 = input_qty_h.value.toString() == "---" ? 0.0 : parseFloat(input_qty_h.value);
+            var qty_i1 = input_qty_i.value.toString() == "---" ? 0.0 : parseFloat(input_qty_i.value);
+            var qty_j1 = input_qty_j.value.toString() == "---" ? 0.0 : parseFloat(input_qty_j.value);
+            var qty_k1 = input_qty_k.value.toString() == "---" ? 0.0 : parseFloat(input_qty_k.value);
+            var qty_l1 = input_qty_l.value.toString() == "---" ? 0.0 : parseFloat(input_qty_l.value);
+            var qty_m1 = input_qty_m.value.toString() == "---" ? 0.0 : parseFloat(input_qty_m.value);
+            var qty_n1 = input_qty_n.value.toString() == "---" ? 0.0 : parseFloat(input_qty_n.value);
+
+            var qty_o1 = input_qty_o.value.toString() == "---" ? 0.0 : parseFloat(input_qty_o.value);
+            var qty_p1 = input_qty_p.value.toString() == "---" ? 0.0 : parseFloat(input_qty_p.value);
+            var qty_q1 = input_qty_q.value.toString() == "---" ? 0.0 : parseFloat(input_qty_q.value);
+            var qty_r1 = input_qty_r.value.toString() == "---" ? 0.0 : parseFloat(input_qty_r.value);
+            var qty_s1 = input_qty_s.value.toString() == "---" ? 0.0 : parseFloat(input_qty_s.value);
+            var qty_t1 = input_qty_t.value.toString() == "---" ? 0.0 : parseFloat(input_qty_t.value);
+            var qty_u1 = input_qty_u.value.toString() == "---" ? 0.0 : parseFloat(input_qty_u.value);
+            var qty_v1 = input_qty_v.value.toString() == "---" ? 0.0 : parseFloat(input_qty_v.value);
+
 
             //var amount_a = parseFloat(input_amount_a.value);
             //var amount_b = parseFloat(input_amount_b.value);
@@ -71,19 +86,22 @@
             //var qtys = qty_a1 + qty_b1 + qty_c1 + qty_d1 + qty_e1 + qty_f1 + qty_g1 +
             //    qty_h1 + qty_i1 + qty_j1 + qty_k1 + qty_l1 + qty_m1 + qty_n1;
 
-            console.log(total_amount1, qty_a1, qty_b1, qty_c1, qty_d1, qty_e1);
+            console.log(total_amount1, qty_a1, qty_b1, qty_c1, qty_d1, qty_e1, qty_f1, qty_g1, qty_o1, qty_p1);
 
             if (total_amount1 > 0 && (qty_a1 > 0 || qty_b1 > 0 || qty_c1 > 0 || qty_d1 > 0 ||
                 qty_e1 > 0 || qty_f1 > 0 || qty_g1 > 0 || qty_h1 > 0 || qty_i1 > 0 ||
-                qty_j1 > 0 || qty_k1 > 0 || qty_l1 > 0 || qty_m1 > 0 || qty_n1 > 0)) {
+                qty_j1 > 0 || qty_k1 > 0 || qty_l1 > 0 || qty_m1 > 0 || qty_n1 > 0 ||
+                qty_o1 > 0 || qty_p1 > 0 || qty_q1 > 0 || qty_r1 > 0 || qty_s1 > 0 ||
+                qty_t1 > 0 || qty_u1 > 0 || qty_v1 > 0)) {
 
                 //计算总用量
                 var qtys = qty_a1 + qty_b1 + qty_c1 + qty_d1 + qty_e1 + qty_f1 + qty_g1 +
-                    qty_h1 + qty_i1 + qty_j1 + qty_k1 + qty_l1 + qty_m1 + qty_n1;
+                    qty_h1 + qty_i1 + qty_j1 + qty_k1 + qty_l1 + qty_m1 + qty_n1 + qty_o1 +
+                    qty_p1 + qty_q1 + qty_r1 + qty_s1 + qty_t1 + qty_u1 + qty_v1;
 
                 //计算单价
                 var input_unit_price = document.getElementById("unit_price");
-                var unit_price1 = (total_amount1 / qtys).toFixed(18);
+                var unit_price1 = (total_amount1 / qtys).toFixed(10);
                 input_unit_price.value = unit_price1.toString();
 
                 //计算各单位金额
@@ -101,7 +119,7 @@
                 var input_amount_l = document.getElementById("amount_l");
                 var input_amount_m = document.getElementById("amount_m");
                 var input_amount_n = document.getElementById("amount_n");
-                /*
+
                 var input_amount_o = document.getElementById("amount_o");
                 var input_amount_p = document.getElementById("amount_p");
                 var input_amount_q = document.getElementById("amount_q");
@@ -110,36 +128,40 @@
                 var input_amount_t = document.getElementById("amount_t");
                 var input_amount_u = document.getElementById("amount_u");
                 var input_amount_v = document.getElementById("amount_v");
-                */
 
-                input_amount_a.value = qty_a1 > 0 ? (qty_a1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_b.value = qty_b1 > 0 ? (qty_b1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_c.value = qty_c1 > 0 ? (qty_c1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_d.value = qty_d1 > 0 ? (qty_d1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_e.value = qty_e1 > 0 ? (qty_e1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_f.value = qty_f1 > 0 ? (qty_f1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_g.value = qty_g1 > 0 ? (qty_g1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_h.value = qty_h1 > 0 ? (qty_h1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_i.value = qty_i1 > 0 ? (qty_i1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_j.value = qty_j1 > 0 ? (qty_j1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_k.value = qty_k1 > 0 ? (qty_k1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_l.value = qty_l1 > 0 ? (qty_l1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_m.value = qty_m1 > 0 ? (qty_m1 * unit_price1).toFixed(2).toString() : '---';
-                input_amount_n.value = qty_n1 > 0 ? (qty_n1 * unit_price1).toFixed(2).toString() : '---';
-                /*
-                if (qty_o > 0) input_amount_o.value = (qty_o * unit_price).toFixed(2);
-                if (qty_p > 0) input_amount_p.value = (qty_p * unit_price).toFixed(2);
-                if (qty_q > 0) input_amount_q.value = (qty_q * unit_price).toFixed(2);
-                if (qty_r > 0) input_amount_r.value = (qty_r * unit_price).toFixed(2);
-                if (qty_s > 0) input_amount_s.value = (qty_s * unit_price).toFixed(2);
-                if (qty_t > 0) input_amount_t.value = (qty_t * unit_price).toFixed(2);
-                if (qty_u > 0) input_amount_u.value = (qty_u * unit_price).toFixed(2);
-                if (qty_v > 0) input_amount_v.value = (qty_v * unit_price).toFixed(2);
-                */
+
+                input_amount_a.value = qty_a1 > 0 ? (qty_a1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_b.value = qty_b1 > 0 ? (qty_b1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_c.value = qty_c1 > 0 ? (qty_c1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_d.value = qty_d1 > 0 ? (qty_d1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_e.value = qty_e1 > 0 ? (qty_e1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_f.value = qty_f1 > 0 ? (qty_f1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_g.value = qty_g1 > 0 ? (qty_g1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_h.value = qty_h1 > 0 ? (qty_h1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_i.value = qty_i1 > 0 ? (qty_i1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_j.value = qty_j1 > 0 ? (qty_j1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_k.value = qty_k1 > 0 ? (qty_k1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_l.value = qty_l1 > 0 ? (qty_l1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_m.value = qty_m1 > 0 ? (qty_m1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_n.value = qty_n1 > 0 ? (qty_n1 * unit_price1).toFixed(2).toString() : "---";
+
+                input_amount_o.value = qty_o1 > 0 ? (qty_o1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_p.value = qty_p1 > 0 ? (qty_p1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_q.value = qty_q1 > 0 ? (qty_q1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_r.value = qty_r1 > 0 ? (qty_r1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_s.value = qty_s1 > 0 ? (qty_s1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_t.value = qty_t1 > 0 ? (qty_t1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_u.value = qty_u1 > 0 ? (qty_u1 * unit_price1).toFixed(2).toString() : "---";
+                input_amount_v.value = qty_v1 > 0 ? (qty_v1 * unit_price1).toFixed(2).toString() : "---";
 
                 //计算总用量
                 var input_total_qty = document.getElementById("total_qty");
                 input_total_qty.value = (total_amount1 / unit_price1).toFixed(2).toString();
+
+                //更新时间
+                var input_voucher_date = document.getElementById("voucher_date");
+                input_voucher_date.value = getNowFormatDate('date');
+
             }
         }
     </script>

@@ -19,7 +19,7 @@
                     <div class="layui-col-xs4">
                         <label class="relative block">
                             <span class="color-green font-w7">单价</span>
-                            <input id="unit_price" name="unit_price1" value='{$vo.unit_price|default="0"}'
+                            <input id="unit_price" name="unit_price" value='{$vo.unit_price|default="0"}'
                                 placeholder="请输入单价" class="layui-input">
                         </label>
                     </div>
@@ -489,7 +489,7 @@
             <div class="layui-col-xs10 layui-col-space5">
                 <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled type="qty_u" name="qty_u" value='{$vo.qty_u|default="---"}' placeholder="请输入用量"
+                        <input disabled id="qty_u" name="qty_u" value='{$vo.qty_u|default="---"}' placeholder="请输入用量"
                             class="layui-input">
                     </label>
                 </div>
@@ -511,7 +511,7 @@
             <div class="layui-col-xs10 layui-col-space5">
                 <div class="layui-col-xs6">
                     <label class="relative block">
-                        <input disabled type="qty_v" name="qty_v" value='{$vo.qty_v|default="---"}' placeholder="请输入用量"
+                        <input disabled id="qty_v" name="qty_v" value='{$vo.qty_v|default="---"}' placeholder="请输入用量"
                             class="layui-input">
                     </label>
                 </div>
@@ -525,7 +525,12 @@
         </div>
 
         <div class="hr-line-dashed"></div>
-        {notempty name='vo.id'}<input type='hidden' value='{$vo.id}' name='id'>{/notempty}
+        {notempty name='vo.id'}
+        <input type='hidden' value='{$vo.id}' name='id'>
+        {/notempty}
+        <input type='hidden' value='{$vo.voucher_date|default="---"}' name='voucher_date' id="voucher_date">
+        <input type='hidden' value='{$vo.is_deleted|default="0"}' name='is_deleted'>
+        <input type='hidden' value='{$vo.voucher_type|default="动力电"}' name='voucher_type'>
 
         <div class="layui-form-item text-center">
             <button class="layui-btn" type='submit'>保存数据</button>
